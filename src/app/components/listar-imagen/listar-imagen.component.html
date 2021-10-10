@@ -1,0 +1,17 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="row row-cols-2 row-cols-md-4 g-4 p-md-2" >
+    <div *ngFor="let item of imagenes | paginate: { itemsPerPage: 10, currentPage: p }"   class="col">
+      <div  class="card">
+        <img [src]="item.previewURL" width="50px" class="card-img-top" alt="...">
+        <div class="card-body">
+          <a [href]="item.largeImageURL" target="_blank" class="btn btn-info">VER IMAGEN</a>
+        </div>
+        <div class="card-footer">
+          <span class="badge bg-primary text-danger p-1"> likes :</span>  <span class="badge bg-danger">{{item.likes}}</span> <br>
+        <span class="badge bg-primary text-danger p-1">Views :</span> <span class="badge bg-danger">{{item.views}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>      
+     <pagination-controls *ngIf="this.imagenes.length >0" (pageChange)="p = $event"></pagination-controls>
